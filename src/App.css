@@ -47,6 +47,12 @@ article img {
   margin: 1em;
 }
 
+article h2 {
+  cursor: pointer;
+}
+
+
+/* MJ CSS */
 nav {
   margin: 10px;
 }

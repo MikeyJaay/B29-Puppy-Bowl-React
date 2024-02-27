@@ -1,7 +1,9 @@
 import { useEffect, useState } from "react";
 import { getAllPlayers } from "../API/index"
+import { useNavigate } from "react-router-dom";
 
 export default function AllPlayers() {
+  const navigate = useNavigate()
   const [players, setPlayers] = useState([])
 
   useEffect(() => {
@@ -17,10 +19,12 @@ export default function AllPlayers() {
     updatePlayers()
   }, [])
 
+
+  // Will go to singleplayer.jsx 
   return <main>{
     players.map((player) => {
       return <article key={player.id}>
-        <h2>
+        <h2 onClick={() => navigate(`/players/${player.id}`)}      >
           <img src={player.imageUrl} />
           {player.name}
         </h2>
