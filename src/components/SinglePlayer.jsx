@@ -1,8 +1,3 @@
 export default function SinglePlayer() {
-    return (
-        <div>
-            Single Player
-
-        </div>
-    )
-}
+    return <div>Single Player</div>
+  }

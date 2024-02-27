@@ -1,33 +1,30 @@
-import { useState, useEffect } from "react";
-import axios from "axios"
-import player from "./SinglePlayer"
-
+import { useEffect, useState } from "react";
+import { getAllPlayers } from "../API/index"
 
 export default function AllPlayers() {
-
   const [players, setPlayers] = useState([])
 
-  useEffect (() => {
-    async function fetchPlayer () {
-      const {data} = await axios.get(' https://fsa-puppy-bowl.herokuapp.com/api/mikey-jaay/players')
-   
-        setPlayers(data)
-   
+  useEffect(() => {
+    async function updatePlayers() {
+      try {
+        const players = await getAllPlayers()
+        console.log('players', players)
+        setPlayers(players)
+      } catch (e) {
+        console.error(e)
+      }
     }
-    fetchPlayer()
+    updatePlayers()
   }, [])
 
-  console.log(players)
-
-
-  if (players.length === 0) {
-    return <h1>Loading Players . . . </h1>
-  }
-
-  return (
-    <section className="all-players">
-      {players.map(player => <Player key={player.id} item={player} />)}
-    </section>
-  );
-
+  return <main>{
+    players.map((player) => {
+      return <article key={player.id}>
+        <h2>
+          <img src={player.imageUrl} />
+          {player.name}
+        </h2>
+      </article>
+    })
+  }</main>
 }

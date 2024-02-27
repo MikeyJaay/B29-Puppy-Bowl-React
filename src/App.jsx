@@ -1,29 +1,20 @@
-import { Routes, Route, Link } from "react-router-dom";
-import SinglePlayer from "./components/SinglePlayer"
+import { Routes, Route } from "react-router-dom";
 import AllPlayers from "./components/AllPlayers";
-import NewPlayerForm from "./components/NewPlayerForm"
-import Navbar from "./components/Navbar";
+import SinglePlayer from './components/SinglePlayer'
+
+import './App.css'
+import NavBar from './components/Navbar'
 
 function App() {
-  
   return (
     <>
-    <h1> Test </h1>
-      <div id='container'>
-          <div id="navbar">
-            <Link to='/'>Home</Link>
-          </div>
-      </div>
-
-
+      <NavBar />
       <Routes>
-        <Route path="/" element={<AllPlayers />} />
-        <Route path="/players/:id" element={<SinglePlayer />} />
+          <Route path='/' element={<AllPlayers/>} />
+          <Route path='/players/:id' element={<SinglePlayer />} />
       </Routes>
     </>
-
-
-  );
+  )
 }
 
-export default App;
+export default App

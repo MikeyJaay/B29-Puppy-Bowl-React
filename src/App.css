@@ -40,3 +40,9 @@
 .read-the-docs {
   color: #888;
 }
+
+article img {
+  height: 60px;
+  vertical-align: middle;
+  margin: 1em;
+}
