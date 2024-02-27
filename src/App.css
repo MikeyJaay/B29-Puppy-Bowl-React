@@ -46,3 +46,8 @@ article img {
   vertical-align: middle;
   margin: 1em;
 }
+
+nav {
+  background-color: rgba(128, 0, 128, 0.243);
+  
+}
