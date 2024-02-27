@@ -48,6 +48,22 @@ article img {
 }
 
 nav {
-  background-color: rgba(128, 0, 128, 0.243);
-  
+  margin: 10px;
 }
+
+form > label {
+  margin: 10px;
+}
+
+main {
+  display: flex;
+  justify-content: center;
+}
+
+.navButton {
+  margin: 10px;
+  background-color: rgba(137, 43, 226, 0.686);
+  border-radius: 5px;
+  color: white;
+}
+
