@@ -1,8 +1,3 @@
-export default function NewPlayerFrom() {
-    return (
-        <div>
-            NewPlayerFrom
-
-        </div>
-    )
-}
+export default function NewPlayerForm() {
+    return <div>NewPlayerForm</div>
+  }
