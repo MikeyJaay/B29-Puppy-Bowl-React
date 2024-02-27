@@ -1,51 +1,42 @@
-import { useState } from "react";
-import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import { useState } from "react"
+import { addPlayer } from "../API"
+import { useNavigate } from "react-router-dom"
 
-export default function NewPlayerForm() {
-  const [name, setName] = useState('');
-  const [breed, setBreed] = useState('');
-  const [imageUrl, setImageUrl] = useState('');
+import "../styles/NPF.css"
 
-  const navigate = useNavigate();
+export default function AllPlayers() {
+const navigate = useNavigate()
 
-  async function handleSumbit(event) {
-    event.preventDefault(); // STOP PAGE REFRESH
+  const [name, setName] = useState('')
+  const [breed, setBreed] = useState('')
+  const [image, setImage] = useState('')
 
-    const payload = {
-    name,
-    breed,
-    imageUrl
-      }
+async function handleSubmit(e) {
+  e.preventDefault() // stops page refrect, e is short for event
 
-    try {
-      const { data } = await axios.post('https://fsa-puppy-bowl.herokuapp.com/api/mikey-jaay/players', payload);
-      console.log('ADDED ITEM', data);
-      
-    } catch (err) {
-      console.error(err);
-    }
+  const playerObject ={
+    name: name, 
+    breed: breed, 
+    imageUrl: image
   }
+  await addPlayer(playerObject);
+  navigate('/')
+}
 
-
-  return (
-    <form onSubmit={handleSumbit}>
-      <label>
-        Player Name:
-        <input value={name} onChange={(e) => setName(e.target.value)} />
-      </label>
-
-      <label>
-        Breed:
-        <input value={breed} onChange={(e) => setBreed(e.target.value)} />
-      </label>
-      
-      <label>
-        ImageUrl:
-        <input value={imageUrl} onChange={(e) => setImageUrl(e.target.value)} />
-      </label>
-  
-      <button type='submit'>Add Player</button>
-    </form>
-  );
+return <form onSubmit={handleSubmit}>
+    <h1>Add Player</h1>
+    <div>
+      <label>Name</label>
+      <input name='name' value={name} onChange={(e) => setName(e.target.value)} />
+    </div>
+    <div>
+      <label>Breed</label>
+      <input name='breed' value={breed} onChange={(e) => setBreed(e.target.value)} />
+    </div>
+    <div>
+      <label>Image URL</label>
+      <input name='image' value={image} onChange={(e) => setImage(e.target.value)}/>
+    </div>
+    <input type='submit' className="submit-button"/>
+  </form>
 }

@@ -47,23 +47,14 @@ article img {
   margin: 1em;
 }
 
+article h2 {
+  cursor: pointer;
+}
+
 nav {
-  margin: 10px;
+  margin-bottom: 2em;
 }
 
-form > label {
-  margin: 10px;
+nav a {
+  margin: 2em;
 }
-
-main {
-  display: flex;
-  justify-content: center;
-}
-
-.navButton {
-  margin: 10px;
-  background-color: rgba(137, 43, 226, 0.686);
-  border-radius: 5px;
-  color: white;
-}
-
