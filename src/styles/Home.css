@@ -1,0 +1,12 @@
+.playerContainer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    gap: 20px;
+  }
+
+img {
+    border: 1px solid black;
+    border-radius: 3rem;
+    min-height: 200px;
+}

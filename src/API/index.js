@@ -15,9 +15,13 @@ export const getAllPlayers = async () => {
 
 export const getSinglePlayer = async (playerId) => {
   const {data} = await axios.get(BASE_URL + '/' + playerId)
-  
-
 return data.data.player
+}
 
+export const addPlayer = async (player) => {
+  await axios.post(BASE_URL, player)
+}
 
+export const deletePlayer = async (playerId) => {
+  await axios.delete(BASE_URL + '/' + playerId)
 }

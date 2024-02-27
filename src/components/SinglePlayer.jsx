@@ -1,16 +1,19 @@
-import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
-import { getSinglePlayer } from "../API";
+import { useState, useEffect } from "react";
+import { useNavigate, useParams } from "react-router-dom";
+import { deletePlayer, getSinglePlayer } from "../API";
+
+import "../styles/SP.css";
 
 export default function SinglePlayer() {
-  // UseParams grabs the player id out of the url ex: players/8282. 8282 is the ID
+  const navigate = useNavigate();
+
   const { id } = useParams();
   const [player, setPlayer] = useState(null);
 
   useEffect(() => {
     async function updatePlayer() {
       try {
-        const player = await getSinglePlayer;
+        const player = await getSinglePlayer(id);
         setPlayer(player);
       } catch (e) {
         console.error(e);
@@ -19,8 +22,22 @@ export default function SinglePlayer() {
     updatePlayer();
   }, []);
 
-  if (!player) {
-    return <div>Loading player {id} . . . </div>;
+  async function deleteHandler(playerId) {
+    await deletePlayer(playerId);
+
+    navigate("/");
   }
-  return <div>Single Player</div>;
+
+  if (!player) {
+    return <div>Loading player {id} . . .</div>;
+  }
+
+  return (
+    <article key={player.id}>
+      <img src={player.imageUrl} className="single-img" />
+      <h2>{player.name}</h2>
+      <h3>{player.breed}</h3>
+      <button onClick={() => deleteHandler(id)}>DELETE!</button>
+    </article>
+  );
 }

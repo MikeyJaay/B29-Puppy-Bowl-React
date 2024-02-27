@@ -1,0 +1,26 @@
+h1 {
+    color: black;
+}
+
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+label {
+    display: flex;
+}
+
+div {
+    margin: 10px;
+}
+
+.submit-button {
+    background-color: blue;
+    color: white;
+    margin-top: 10px;
+    border-radius: 5rem;
+    width: 4rem;
+}

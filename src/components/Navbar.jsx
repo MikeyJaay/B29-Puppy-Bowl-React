@@ -9,8 +9,8 @@ export default function NavBar() {
       </section>
 
   <nav>
-    <Link to="/" className='navButton'>Home</Link>
-    <Link to="/NewPlayerForm" className='navButton'> Add Player </Link>
+    <Link to="/">Home</Link>
+    <Link to="/players/add"> Add Player </Link>
   </nav>
   </header>
 )}
